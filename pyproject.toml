@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "moe-transformer-lab"
+version = "0.1.0"
+description = "CS189/CS336-style transformer and MoE implementation assignment."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Local assignment project" }]
+dependencies = []
+
+[project.optional-dependencies]
+train = [
+    "torch",
+    "datasets",
+    "tokenizers",
+    "tqdm",
+]
+dev = [
+    "pytest",
+    "nbformat",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
