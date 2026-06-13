@@ -4,6 +4,38 @@ This repo is a coding-practice assignment for implementing a small decoder-only
 transformer and then swapping the dense feed-forward network for a Mixture of
 Experts (MoE) feed-forward block.
 
+## Project 01 Additive Track: Transformer + Inference Foundations
+
+This repository now also serves as **Project 01** in the summer frontier-systems
+plan: build the model-side foundations needed to understand LLM inference. The
+existing dense Transformer and MoE assignment remains intact, but the broader
+scope now includes decoder-only language-model tensor shapes, causal attention,
+modern block choices, autoregressive sampling, KV-cache inference, and
+prefill/decode benchmarking.
+
+The Project 01 learning target is practical inference fluency:
+
+1. explain the path from token IDs `(B, T)` to logits `(B, T, vocab_size)`;
+2. derive causal multi-head attention with `(B, H, T, Dh)` tensors;
+3. understand where RoPE, RMSNorm, and SwiGLU fit in modern decoder blocks;
+4. compare greedy, temperature, top-k, and top-p sampling;
+5. explain prefill vs decode and the KV-cache memory formula;
+6. measure latency, tokens/sec, memory, and cached-vs-uncached speedup.
+
+MoE is now framed as an optional feed-forward extension after the inference
+foundation is understood. It still uses the same residual block, attention path,
+language-model objective, generation loop, and checkpointing path.
+
+Project 01 scaffold files:
+
+```text
+configs/tiny_inference.json                 Tiny inference-oriented config seed
+docs/project_01_scope.md                    Goal, scope, and acceptance criteria
+docs/day01_to_day07_checklist.md            Seven-day execution checklist
+reports/transformer_inference_report.md     Report template for benchmark results
+results/                                    Raw benchmark outputs and logs
+```
+
 The main assignment document is:
 
 ```text
@@ -36,6 +68,10 @@ scripts/train_tokenizer.py                   Byte/BPE tokenizer helper
 scripts/train_dense.py                       Dense transformer training wrapper
 scripts/train_moe.py                         Dense or MoE training script
 scripts/generate.py                          Checkpoint text generation
+configs/                                    Project 01 config seeds
+docs/                                       Project 01 scope and daily checklist
+reports/                                    Technical report templates
+results/                                    Raw benchmark/result artifacts
 tests/                                       Pytest checks for each subsystem
 ```
 
@@ -109,3 +145,11 @@ load-balancing loss.
 For the detailed MoE implementation recipe, including router tensor shapes,
 top-k dispatch/combine pseudocode, and common failure modes, use the notebook
 section titled "MoE Tensor Flow" and the sections that follow it.
+
+## Figures
+
+The notebook uses generated classroom-style SVG diagrams. Regenerate them with:
+
+```powershell
+python scripts/generate_figures.py
+```

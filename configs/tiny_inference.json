@@ -1,0 +1,29 @@
+{
+  "description": "Tiny Project 01 inference-foundations config seed. This mirrors the current trainable model fields and leaves future inference-specific fields explicit.",
+  "model": {
+    "vocab_size": 257,
+    "max_seq_len": 128,
+    "d_model": 128,
+    "n_layers": 2,
+    "n_heads": 4,
+    "d_ff": 512,
+    "dropout": 0.0,
+    "norm_eps": 1e-5,
+    "ffn_type": "dense",
+    "n_experts": 4,
+    "top_k": 1,
+    "aux_loss_coef": 0.01
+  },
+  "inference": {
+    "prompt_lengths": [64, 128],
+    "max_new_tokens": 32,
+    "temperature": 0.9,
+    "top_k": 50,
+    "top_p": null,
+    "use_kv_cache": false
+  },
+  "notes": [
+    "RoPE, RMSNorm, SwiGLU, top-p, KV cache, and benchmark scripts are planned future implementation work.",
+    "MoE remains an optional feed-forward extension and is not required for the core Project 01 inference path."
+  ]
+}

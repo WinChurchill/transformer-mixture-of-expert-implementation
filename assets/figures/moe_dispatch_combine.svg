@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="420" viewBox="0 0 1060 420">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#1f2933" />
+  </marker>
+</defs>
+<rect x="0" y="0" width="1060" height="420" fill="white" />
+<text x="45" y="45.0" font-family="Arial, sans-serif" font-size="17" fill="#1f2933" text-anchor="start" dominant-baseline="middle">Dispatch/combine preserves token order: flatten for routing, then reshape back for the residual path.</text>
+<rect x="55" y="160" width="105" height="60" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="107.5" y="185.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<text x="107.5" y="200.39999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,N,D)</text>
+<rect x="220" y="160" width="120" height="60" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="280.0" y="185.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">flatten</text>
+<text x="280.0" y="200.39999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(T,D)</text>
+<rect x="400" y="160" width="125" height="60" fill="#ffe6c9" stroke="#bf6b21" stroke-width="2" rx="4" />
+<text x="462.5" y="185.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">dispatch</text>
+<text x="462.5" y="200.39999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">by expert</text>
+<rect x="600" y="85" width="110" height="42" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="655.0" y="106.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">expert 0</text>
+<line x1="525" y1="190" x2="600" y2="106" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="710" y1="106" x2="790" y2="190" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="600" y="160" width="110" height="42" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="655.0" y="181.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">expert 1</text>
+<line x1="525" y1="190" x2="600" y2="181" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="710" y1="181" x2="790" y2="190" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="600" y="235" width="110" height="42" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="655.0" y="256.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">expert E</text>
+<line x1="525" y1="190" x2="600" y2="256" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="710" y1="256" x2="790" y2="190" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="790" y="160" width="125" height="60" fill="#eadfff" stroke="#7453b6" stroke-width="2" rx="4" />
+<text x="852.5" y="185.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">weighted</text>
+<text x="852.5" y="200.39999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">combine</text>
+<rect x="965" y="160" width="80" height="60" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="1005.0" y="185.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">y</text>
+<text x="1005.0" y="200.39999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,N,D)</text>
+<line x1="160" y1="190" x2="220" y2="190" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="340" y1="190" x2="400" y2="190" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="915" y1="190" x2="965" y2="190" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<text x="230" y="340.0" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="start" dominant-baseline="middle">index_add_ sums contributions when top-k sends one token to multiple experts.</text>
+</svg>

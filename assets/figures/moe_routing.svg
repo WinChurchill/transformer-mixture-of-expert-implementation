@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#1f2933" />
+  </marker>
+</defs>
+<rect x="0" y="0" width="980" height="420" fill="white" />
+<text x="45" y="45.0" font-family="Arial, sans-serif" font-size="17" fill="#1f2933" text-anchor="start" dominant-baseline="middle">MoE routing: every token receives expert probabilities, then only top-k experts run.</text>
+<rect x="70" y="100" width="100" height="40" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="120.0" y="120.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">token 0</text>
+<line x1="170" y1="120" x2="300" y2="210" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="70" y="165" width="100" height="40" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="120.0" y="185.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">token 1</text>
+<line x1="170" y1="185" x2="300" y2="210" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="70" y="230" width="100" height="40" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="120.0" y="250.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">token 2</text>
+<line x1="170" y1="250" x2="300" y2="210" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="70" y="295" width="100" height="40" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="120.0" y="315.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">token 3</text>
+<line x1="170" y1="315" x2="300" y2="210" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="300" y="170" width="125" height="80" fill="#ffe6c9" stroke="#bf6b21" stroke-width="2" rx="4" />
+<text x="362.5" y="205.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">router</text>
+<text x="362.5" y="220.39999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">softmax</text>
+<rect x="585" y="90" width="110" height="42" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="640.0" y="111.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">expert 0</text>
+<line x1="425" y1="210" x2="585" y2="111" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="585" y="155" width="110" height="42" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="640.0" y="176.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">expert 1</text>
+<line x1="425" y1="210" x2="585" y2="176" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="585" y="220" width="110" height="42" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="640.0" y="241.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">expert 2</text>
+<line x1="425" y1="210" x2="585" y2="241" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="585" y="285" width="110" height="42" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="640.0" y="306.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">expert 3</text>
+<line x1="425" y1="210" x2="585" y2="306" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<text x="735" y="204.4" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="start" dominant-baseline="middle">top-k chooses a small</text>
+<text x="735" y="222.8" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="start" dominant-baseline="middle">set of experts per token</text>
+</svg>
