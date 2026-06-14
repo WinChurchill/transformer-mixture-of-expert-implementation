@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="430" viewBox="0 0 1080 430">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#1f2933" />
+  </marker>
+</defs>
+<rect x="0" y="0" width="1080" height="430" fill="white" />
+<text x="45" y="45.0" font-family="Arial, sans-serif" font-size="17" fill="#1f2933" text-anchor="start" dominant-baseline="middle">RoPE injects position by rotating Q and K after projection and head split; V is unchanged.</text>
+<rect x="60" y="185" width="100" height="60" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="110.0" y="210.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<text x="110.0" y="225.39999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,T,C)</text>
+<rect x="250" y="90" width="95" height="48" fill="#ffe6c9" stroke="#bf6b21" stroke-width="2" rx="4" />
+<text x="297.5" y="114.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">Q proj</text>
+<rect x="405" y="90" width="120" height="48" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="465.0" y="109.8" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">Q</text>
+<text x="465.0" y="123.6" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,H,T,Dh)</text>
+<line x1="160" y1="215" x2="250" y2="114" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="345" y1="114" x2="405" y2="114" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="250" y="185" width="95" height="48" fill="#ffe6c9" stroke="#bf6b21" stroke-width="2" rx="4" />
+<text x="297.5" y="209.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">K proj</text>
+<rect x="405" y="185" width="120" height="48" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="465.0" y="204.8" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">K</text>
+<text x="465.0" y="218.60000000000002" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,H,T,Dh)</text>
+<line x1="160" y1="215" x2="250" y2="209" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="345" y1="209" x2="405" y2="209" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="250" y="280" width="95" height="48" fill="#ffe6c9" stroke="#bf6b21" stroke-width="2" rx="4" />
+<text x="297.5" y="304.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">V proj</text>
+<rect x="405" y="280" width="120" height="48" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="465.0" y="299.8" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">V</text>
+<text x="465.0" y="313.6" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,H,T,Dh)</text>
+<line x1="160" y1="215" x2="250" y2="304" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="345" y1="304" x2="405" y2="304" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="610" y="90" width="130" height="48" fill="#eadfff" stroke="#7453b6" stroke-width="2" rx="4" />
+<text x="675.0" y="109.8" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">rotate by</text>
+<text x="675.0" y="123.6" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">position</text>
+<rect x="610" y="185" width="130" height="48" fill="#eadfff" stroke="#7453b6" stroke-width="2" rx="4" />
+<text x="675.0" y="204.8" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">rotate by</text>
+<text x="675.0" y="218.60000000000002" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">position</text>
+<rect x="610" y="280" width="130" height="48" fill="#f1f3f5" stroke="#70757a" stroke-width="2" rx="4" />
+<text x="675.0" y="304.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">no rotation</text>
+<line x1="525" y1="114" x2="610" y2="114" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="525" y1="209" x2="610" y2="209" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="525" y1="304" x2="610" y2="304" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="830" y="140" width="140" height="70" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="900.0" y="170.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">scores</text>
+<text x="900.0" y="185.39999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">Q_rot K_rot^T</text>
+<rect x="830" y="260" width="140" height="55" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="900.0" y="287.5" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">values V</text>
+<line x1="740" y1="114" x2="830" y2="165" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="740" y1="209" x2="830" y2="185" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="740" y1="304" x2="830" y2="288" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<text x="90" y="375.0" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="start" dominant-baseline="middle">Relative position enters through the Q/K dot product; values remain the content being mixed.</text>
+</svg>

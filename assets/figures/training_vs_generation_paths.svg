@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="460" viewBox="0 0 1120 460">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#1f2933" />
+  </marker>
+</defs>
+<rect x="0" y="0" width="1120" height="460" fill="white" />
+<text x="45" y="45.0" font-family="Arial, sans-serif" font-size="17" fill="#1f2933" text-anchor="start" dominant-baseline="middle">The same model forward supports two workflows: parallel training and autoregressive generation.</text>
+<text x="45" y="155.0" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="start" dominant-baseline="middle">training</text>
+<rect x="160" y="120" width="120" height="60" fill="#ffe6c9" stroke="#bf6b21" stroke-width="2" rx="4" />
+<text x="220.0" y="150.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">text shard</text>
+<line x1="280" y1="150.0" x2="318" y2="150.0" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="318" y="120" width="120" height="60" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="378.0" y="145.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">sample</text>
+<text x="378.0" y="160.39999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x,y</text>
+<line x1="438" y1="150.0" x2="476" y2="150.0" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="476" y="120" width="120" height="60" fill="#eadfff" stroke="#7453b6" stroke-width="2" rx="4" />
+<text x="536.0" y="145.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">model</text>
+<text x="536.0" y="160.39999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">forward</text>
+<line x1="596" y1="150.0" x2="634" y2="150.0" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="634" y="120" width="120" height="60" fill="#ffd7d7" stroke="#b83a3a" stroke-width="2" rx="4" />
+<text x="694.0" y="145.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">logits + y</text>
+<text x="694.0" y="160.39999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">CE loss</text>
+<line x1="754" y1="150.0" x2="792" y2="150.0" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="792" y="120" width="120" height="60" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="852.0" y="145.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">backward</text>
+<text x="852.0" y="160.39999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">AdamW</text>
+<line x1="912" y1="150.0" x2="950" y2="150.0" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="950" y="120" width="120" height="60" fill="#f1f3f5" stroke="#70757a" stroke-width="2" rx="4" />
+<text x="1010.0" y="150.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">checkpoint</text>
+<text x="45" y="315.0" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="start" dominant-baseline="middle">generation</text>
+<rect x="160" y="280" width="120" height="60" fill="#ffe6c9" stroke="#bf6b21" stroke-width="2" rx="4" />
+<text x="220.0" y="310.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">prompt</text>
+<line x1="280" y1="310.0" x2="318" y2="310.0" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="318" y="280" width="120" height="60" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="378.0" y="310.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">tokenize</text>
+<line x1="438" y1="310.0" x2="476" y2="310.0" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="476" y="280" width="120" height="60" fill="#eadfff" stroke="#7453b6" stroke-width="2" rx="4" />
+<text x="536.0" y="305.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">model</text>
+<text x="536.0" y="320.4" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">forward</text>
+<line x1="596" y1="310.0" x2="634" y2="310.0" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="634" y="280" width="120" height="60" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="694.0" y="310.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">last logits</text>
+<line x1="754" y1="310.0" x2="792" y2="310.0" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="792" y="280" width="120" height="60" fill="#ffd7d7" stroke="#b83a3a" stroke-width="2" rx="4" />
+<text x="852.0" y="305.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">filter +</text>
+<text x="852.0" y="320.4" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">sample</text>
+<line x1="912" y1="310.0" x2="950" y2="310.0" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="950" y="280" width="120" height="60" fill="#f1f3f5" stroke="#70757a" stroke-width="2" rx="4" />
+<text x="1010.0" y="305.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">append</text>
+<text x="1010.0" y="320.4" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">repeat</text>
+<text x="160" y="405.0" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="start" dominant-baseline="middle">Training consumes shifted targets; generation feeds each sampled token back into the next step.</text>
+</svg>

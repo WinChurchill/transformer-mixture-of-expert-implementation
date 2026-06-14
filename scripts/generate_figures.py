@@ -53,10 +53,37 @@ class SVG:
             f'stroke="{color}" stroke-width="{width}" marker-end="url(#arrow)" />'
         )
 
+    def plain_line(self, x1: float, y1: float, x2: float, y2: float, *, color=DARK, width=2) -> None:
+        self.items.append(
+            f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" '
+            f'stroke="{color}" stroke-width="{width}" />'
+        )
+
     def path(self, d: str, *, color=DARK, width=2) -> None:
         self.items.append(
             f'<path d="{d}" fill="none" stroke="{color}" stroke-width="{width}" marker-end="url(#arrow)" />'
         )
+
+    def circle(self, x: float, y: float, r: float, text: str, *, fill=GRAY, stroke=GRAY_EDGE, size=15) -> None:
+        self.items.append(
+            f'<circle cx="{x}" cy="{y}" r="{r}" fill="{fill}" stroke="{stroke}" stroke-width="2" />'
+        )
+        self.text(x, y, text, size=size, anchor="middle", valign="middle")
+
+    def labeled_arrow(
+        self,
+        x1: float,
+        y1: float,
+        x2: float,
+        y2: float,
+        label: str = "",
+        *,
+        color=DARK,
+        size=13,
+    ) -> None:
+        self.line(x1, y1, x2, y2, color=color)
+        if label:
+            self.text((x1 + x2) / 2, (y1 + y2) / 2 - 14, label, size=size, anchor="middle")
 
     def matrix(self, x: float, y: float, rows: int, cols: int, *, cell=32, label="", highlights=None) -> None:
         highlights = highlights or {}
@@ -258,6 +285,305 @@ def moe_dispatch_combine() -> None:
     s.save("moe_dispatch_combine.svg")
 
 
+def decoder_shape_ladder() -> None:
+    s = SVG(1120, 430)
+    s.text(45, 45, "Decoder-only shape ladder: only the last dimension changes until the vocabulary projection.", size=17)
+    stages = [
+        ("token ids\nidx\n(B,T)", ORANGE, ORANGE_EDGE),
+        ("embedding\nlookup\n(B,T,C)", BLUE, BLUE_EDGE),
+        ("position\ninformation\n(B,T,C)", BLUE, BLUE_EDGE),
+        ("blocks x L\n(B,T,C)", PURPLE, PURPLE_EDGE),
+        ("lm_head\n(B,T,V)", GREEN, GREEN_EDGE),
+        ("cross entropy\n(B*T,V) + (B*T)", RED, RED_EDGE),
+    ]
+    x0, y, w, h, gap = 45, 150, 130, 80, 42
+    for i, (label, fill, stroke) in enumerate(stages):
+        x = x0 + i * (w + gap)
+        s.rect(x, y, w, h, label, fill=fill, stroke=stroke, size=13)
+        if i < len(stages) - 1:
+            s.labeled_arrow(x + w, y + h / 2, x + w + gap, y + h / 2)
+    s.text(65, 300, "Training uses logits at every position. Generation reads only logits[:, -1, :].", size=16)
+    s.text(65, 335, "Targets stay integer token IDs; they do not get a vocabulary dimension.", size=16)
+    s.save("decoder_shape_ladder.svg")
+
+
+def training_vs_generation_paths() -> None:
+    s = SVG(1120, 460)
+    s.text(45, 45, "The same model forward supports two workflows: parallel training and autoregressive generation.", size=17)
+    train = [
+        ("text shard", ORANGE, ORANGE_EDGE),
+        ("sample\nx,y", BLUE, BLUE_EDGE),
+        ("model\nforward", PURPLE, PURPLE_EDGE),
+        ("logits + y\nCE loss", RED, RED_EDGE),
+        ("backward\nAdamW", GREEN, GREEN_EDGE),
+        ("checkpoint", GRAY, GRAY_EDGE),
+    ]
+    gen = [
+        ("prompt", ORANGE, ORANGE_EDGE),
+        ("tokenize", BLUE, BLUE_EDGE),
+        ("model\nforward", PURPLE, PURPLE_EDGE),
+        ("last logits", GREEN, GREEN_EDGE),
+        ("filter +\nsample", RED, RED_EDGE),
+        ("append\nrepeat", GRAY, GRAY_EDGE),
+    ]
+    for row, stages in enumerate([train, gen]):
+        y = 120 + row * 160
+        s.text(45, y + 35, "training" if row == 0 else "generation", size=16, anchor="start")
+        x0, w, h, gap = 160, 120, 60, 38
+        for i, (label, fill, stroke) in enumerate(stages):
+            x = x0 + i * (w + gap)
+            s.rect(x, y, w, h, label, fill=fill, stroke=stroke, size=13)
+            if i < len(stages) - 1:
+                s.line(x + w, y + h / 2, x + w + gap, y + h / 2)
+    s.text(160, 405, "Training consumes shifted targets; generation feeds each sampled token back into the next step.", size=16)
+    s.save("training_vs_generation_paths.svg")
+
+
+def causal_mask_matrix() -> None:
+    s = SVG(700, 430)
+    s.text(45, 40, "Causal mask: each target position can read only itself and earlier source positions.", size=17)
+    rows = cols = 6
+    cell = 42
+    x0, y0 = 190, 90
+    for r in range(rows):
+        s.text(x0 - 28, y0 + r * cell + cell / 2, f"t{r}", size=13, anchor="middle", valign="middle")
+        s.text(x0 + r * cell + cell / 2, y0 - 24, f"s{r}", size=13, anchor="middle", valign="middle")
+        for c in range(cols):
+            fill = GREEN if c <= r else RED
+            stroke = GREEN_EDGE if c <= r else RED_EDGE
+            label = "ok" if c <= r else "x"
+            s.items.append(
+                f'<rect x="{x0 + c * cell}" y="{y0 + r * cell}" width="{cell}" height="{cell}" '
+                f'fill="{fill}" stroke="{stroke}" stroke-width="1" />'
+            )
+            s.text(x0 + c * cell + cell / 2, y0 + r * cell + cell / 2, label, size=12, anchor="middle", valign="middle")
+    s.text(90, 380, "Green cells survive softmax. Red future cells are set to -inf before softmax.", size=16)
+    s.save("causal_mask_matrix.svg")
+
+
+def attention_memory_scaling() -> None:
+    s = SVG(980, 430)
+    s.text(45, 45, "Attention memory changes shape between full prefill and one-token cached decode.", size=17)
+    s.matrix(100, 120, 5, 5, cell=38, label="prefill scores: (T,T)")
+    s.text(120, 330, "B * H * T * T", size=18, anchor="start")
+    s.rect(440, 150, 110, 70, "vs", fill=GRAY, stroke=GRAY_EDGE, size=24)
+    highlights = {(0, c): GREEN for c in range(7)}
+    s.matrix(650, 160, 1, 7, cell=38, highlights=highlights, label="decode scores: (1,T_cache)")
+    s.text(670, 330, "B * H * 1 * T_cache", size=18, anchor="start")
+    s.text(70, 385, "KV cache removes repeated K/V computation; the newest query still reads the cached sequence.", size=16)
+    s.save("attention_memory_scaling.svg")
+
+
+def rope_qk_rotation() -> None:
+    s = SVG(1080, 430)
+    s.text(45, 45, "RoPE injects position by rotating Q and K after projection and head split; V is unchanged.", size=17)
+    s.rect(60, 185, 100, 60, "x\n(B,T,C)", fill=BLUE, stroke=BLUE_EDGE, size=13)
+    ys = [90, 185, 280]
+    labels = ["Q", "K", "V"]
+    for y, label in zip(ys, labels):
+        s.rect(250, y, 95, 48, f"{label} proj", fill=ORANGE, stroke=ORANGE_EDGE, size=13)
+        s.rect(405, y, 120, 48, f"{label}\n(B,H,T,Dh)", fill=BLUE, stroke=BLUE_EDGE, size=12)
+        s.line(160, 215, 250, y + 24)
+        s.line(345, y + 24, 405, y + 24)
+    s.rect(610, 90, 130, 48, "rotate by\nposition", fill=PURPLE, stroke=PURPLE_EDGE, size=12)
+    s.rect(610, 185, 130, 48, "rotate by\nposition", fill=PURPLE, stroke=PURPLE_EDGE, size=12)
+    s.rect(610, 280, 130, 48, "no rotation", fill=GRAY, stroke=GRAY_EDGE, size=12)
+    s.line(525, 114, 610, 114)
+    s.line(525, 209, 610, 209)
+    s.line(525, 304, 610, 304)
+    s.rect(830, 140, 140, 70, "scores\nQ_rot K_rot^T", fill=GREEN, stroke=GREEN_EDGE, size=13)
+    s.rect(830, 260, 140, 55, "values V", fill=BLUE, stroke=BLUE_EDGE, size=13)
+    s.line(740, 114, 830, 165)
+    s.line(740, 209, 830, 185)
+    s.line(740, 304, 830, 288)
+    s.text(90, 375, "Relative position enters through the Q/K dot product; values remain the content being mixed.", size=16)
+    s.save("rope_qk_rotation.svg")
+
+
+def rmsnorm_vs_layernorm() -> None:
+    s = SVG(980, 410)
+    s.text(45, 45, "LayerNorm and RMSNorm both rescale token vectors, but RMSNorm skips mean subtraction.", size=17)
+    s.rect(85, 115, 170, 70, "x\none token vector", fill=BLUE, stroke=BLUE_EDGE, size=13)
+    s.rect(345, 90, 190, 70, "LayerNorm\nsubtract mean\nthen divide by std", fill=GREEN, stroke=GREEN_EDGE, size=13)
+    s.rect(345, 220, 190, 70, "RMSNorm\ndivide by RMS\nno mean subtraction", fill=PURPLE, stroke=PURPLE_EDGE, size=13)
+    s.line(255, 150, 345, 125)
+    s.line(255, 150, 345, 255)
+    s.rect(660, 90, 205, 70, "gamma * normalized\n(+ beta usually)", fill=GREEN, stroke=GREEN_EDGE, size=13)
+    s.rect(660, 220, 205, 70, "weight * x / rms\n(no bias usually)", fill=PURPLE, stroke=PURPLE_EDGE, size=13)
+    s.line(535, 125, 660, 125)
+    s.line(535, 255, 660, 255)
+    s.text(95, 355, "Both preserve shape (B,T,C). RMSNorm is simpler and common in modern decoder-only blocks.", size=16)
+    s.save("rmsnorm_vs_layernorm.svg")
+
+
+def swiglu_mlp() -> None:
+    s = SVG(1040, 420)
+    s.text(45, 45, "SwiGLU uses a value path and a gate path before projecting back to the residual width.", size=17)
+    s.rect(65, 180, 100, 58, "x\n(B,T,C)", fill=BLUE, stroke=BLUE_EDGE, size=13)
+    s.rect(250, 115, 140, 55, "value linear\nW_v x", fill=ORANGE, stroke=ORANGE_EDGE, size=13)
+    s.rect(250, 255, 140, 55, "gate linear\nW_g x", fill=ORANGE, stroke=ORANGE_EDGE, size=13)
+    s.rect(455, 255, 100, 55, "SiLU", fill=GREEN, stroke=GREEN_EDGE, size=14)
+    s.circle(640, 210, 35, "*", fill=PURPLE, stroke=PURPLE_EDGE, size=22)
+    s.rect(760, 180, 125, 58, "out linear\nW_o", fill=BLUE, stroke=BLUE_EDGE, size=13)
+    s.rect(935, 180, 85, 58, "y\n(B,T,C)", fill=GREEN, stroke=GREEN_EDGE, size=13)
+    s.line(165, 209, 250, 142)
+    s.line(165, 209, 250, 282)
+    s.line(390, 142, 640, 190)
+    s.line(390, 282, 455, 282)
+    s.line(555, 282, 640, 230)
+    s.line(675, 210, 760, 209)
+    s.line(885, 209, 935, 209)
+    s.text(75, 360, "The external contract is unchanged: a token-wise MLP maps (B,T,C) back to (B,T,C).", size=16)
+    s.save("swiglu_mlp.svg")
+
+
+def sampling_filters() -> None:
+    s = SVG(1120, 430)
+    s.text(45, 45, "Sampling turns last-position logits into one next token; filters change the candidate set.", size=17)
+    stages = [
+        ("last logits\n(B,V)", BLUE, BLUE_EDGE),
+        ("temperature\nscale", ORANGE, ORANGE_EDGE),
+        ("top-k\nfixed count", GREEN, GREEN_EDGE),
+        ("top-p\nprob mass", GREEN, GREEN_EDGE),
+        ("softmax\nrenormalize", PURPLE, PURPLE_EDGE),
+        ("sample\nnext token", RED, RED_EDGE),
+    ]
+    x0, y, w, h, gap = 55, 160, 130, 62, 42
+    for i, (label, fill, stroke) in enumerate(stages):
+        x = x0 + i * (w + gap)
+        s.rect(x, y, w, h, label, fill=fill, stroke=stroke, size=13)
+        if i < len(stages) - 1:
+            s.line(x + w, y + h / 2, x + w + gap, y + h / 2)
+    s.text(80, 300, "top-k keeps a fixed number of tokens; top-p keeps enough tokens to reach cumulative probability p.", size=16)
+    s.text(80, 335, "This is vocabulary filtering, not MoE expert routing.", size=16)
+    s.save("sampling_filters.svg")
+
+
+def prefill_decode_timeline() -> None:
+    s = SVG(1080, 420)
+    s.text(45, 45, "Inference has two phases: one prompt prefill, then repeated one-token decode steps.", size=17)
+    s.rect(80, 140, 300, 90, "prefill\nprocess prompt tokens\nbuild initial KV cache", fill=ORANGE, stroke=ORANGE_EDGE, size=14)
+    decode_x = [470, 610, 750, 890]
+    for i, x in enumerate(decode_x):
+        s.rect(x, 150, 95, 70, f"decode\nstep {i+1}", fill=BLUE, stroke=BLUE_EDGE, size=12)
+        if i < len(decode_x) - 1:
+            s.line(x + 95, 185, decode_x[i + 1], 185)
+    s.line(380, 185, 470, 185)
+    s.rect(470, 285, 515, 55, "cache grows: T_prompt -> T_prompt+1 -> T_prompt+2 -> ...", fill=GREEN, stroke=GREEN_EDGE, size=14)
+    for x in decode_x:
+        s.line(x + 48, 220, x + 48, 285)
+    s.text(85, 375, "Prefill is prompt-length dependent; decode repeats once per generated token.", size=16)
+    s.save("prefill_decode_timeline.svg")
+
+
+def kv_cache_layout() -> None:
+    s = SVG(1060, 460)
+    s.text(45, 45, "KV cache layout: every transformer layer stores keys and values for previous tokens.", size=17)
+    y0 = 105
+    for layer in range(3):
+        y = y0 + layer * 100
+        s.rect(70, y, 105, 58, f"layer {layer}", fill=GRAY, stroke=GRAY_EDGE, size=13)
+        s.rect(245, y - 10, 210, 35, "K cache\n(B,H,T_cache,Dh)", fill=BLUE, stroke=BLUE_EDGE, size=12)
+        s.rect(245, y + 35, 210, 35, "V cache\n(B,H,T_cache,Dh)", fill=GREEN, stroke=GREEN_EDGE, size=12)
+        s.line(175, y + 29, 245, y + 8)
+        s.line(175, y + 29, 245, y + 52)
+    s.rect(610, 125, 150, 55, "new K,V\n(B,H,1,Dh)", fill=ORANGE, stroke=ORANGE_EDGE, size=13)
+    s.rect(835, 125, 160, 55, "append on\nsequence axis", fill=PURPLE, stroke=PURPLE_EDGE, size=13)
+    s.line(455, 135, 610, 152)
+    s.line(760, 152, 835, 152)
+    s.text(610, 250, "memory = layers * 2 * B * H * T_cache * Dh * dtype_bytes", size=16)
+    s.text(610, 300, "The factor 2 is for K and V. The cache grows linearly with sequence length.", size=16)
+    s.save("kv_cache_layout.svg")
+
+
+def cached_vs_uncached_decode() -> None:
+    s = SVG(1100, 440)
+    s.text(45, 45, "Cached decode should match uncached final-token logits while avoiding repeated K/V work.", size=17)
+    s.text(70, 105, "uncached generation step", size=16)
+    s.rect(70, 130, 190, 60, "full sequence\nall tokens", fill=ORANGE, stroke=ORANGE_EDGE, size=13)
+    s.rect(340, 130, 165, 60, "full forward\nrecompute K,V", fill=RED, stroke=RED_EDGE, size=13)
+    s.rect(585, 130, 150, 60, "final logits", fill=GREEN, stroke=GREEN_EDGE, size=13)
+    s.line(260, 160, 340, 160)
+    s.line(505, 160, 585, 160)
+    s.text(70, 250, "cached decode step", size=16)
+    s.rect(70, 275, 150, 60, "newest\ntoken only", fill=ORANGE, stroke=ORANGE_EDGE, size=13)
+    s.rect(290, 275, 145, 60, "past K,V\ncache", fill=BLUE, stroke=BLUE_EDGE, size=13)
+    s.rect(505, 275, 165, 60, "decode forward\nreuse K,V", fill=PURPLE, stroke=PURPLE_EDGE, size=13)
+    s.rect(750, 275, 150, 60, "final logits", fill=GREEN, stroke=GREEN_EDGE, size=13)
+    s.line(220, 305, 505, 305)
+    s.line(435, 305, 505, 305)
+    s.line(670, 305, 750, 305)
+    s.text(70, 390, "Correctness compares logits, not sampled text. Use eval mode so dropout cannot hide cache bugs.", size=16)
+    s.save("cached_vs_uncached_decode.svg")
+
+
+def benchmark_metrics_dashboard() -> None:
+    s = SVG(1080, 430)
+    s.text(45, 45, "Inference benchmarks need workload shape, speed, memory, and a cached-vs-uncached comparison.", size=17)
+    cards = [
+        ("prefill\nlatency", "prompt cost"),
+        ("decode\nlatency", "per token"),
+        ("tokens/sec", "throughput"),
+        ("peak\nmemory", "capacity"),
+        ("speedup", "cached / uncached"),
+    ]
+    x0, y, w, h, gap = 70, 120, 150, 95, 35
+    colors = [(ORANGE, ORANGE_EDGE), (BLUE, BLUE_EDGE), (GREEN, GREEN_EDGE), (PURPLE, PURPLE_EDGE), (RED, RED_EDGE)]
+    for i, ((title, subtitle), (fill, stroke)) in enumerate(zip(cards, colors)):
+        x = x0 + i * (w + gap)
+        s.rect(x, y, w, h, title, fill=fill, stroke=stroke, size=16)
+        s.text(x + w / 2, y + h + 32, subtitle, size=14, anchor="middle")
+    s.rect(230, 300, 625, 55, "always record: model config, device, dtype, prompt length, new tokens, seed", fill=GRAY, stroke=GRAY_EDGE, size=15)
+    s.text(95, 395, "A tokens/sec number without prompt length and cache mode is not interpretable.", size=16)
+    s.save("benchmark_metrics_dashboard.svg")
+
+
+def training_step_flow() -> None:
+    s = SVG(1120, 430)
+    s.text(45, 45, "One training step: shifted targets create a supervised signal at every position.", size=17)
+    stages = [
+        ("tokens", ORANGE, ORANGE_EDGE),
+        ("sample\nx,y", BLUE, BLUE_EDGE),
+        ("model\nforward", PURPLE, PURPLE_EDGE),
+        ("CE loss\n+ MoE aux", RED, RED_EDGE),
+        ("backward", RED, RED_EDGE),
+        ("clip grad\nAdamW", GREEN, GREEN_EDGE),
+        ("checkpoint\nperiodically", GRAY, GRAY_EDGE),
+    ]
+    x0, y, w, h, gap = 45, 160, 120, 62, 30
+    for i, (label, fill, stroke) in enumerate(stages):
+        x = x0 + i * (w + gap)
+        s.rect(x, y, w, h, label, fill=fill, stroke=stroke, size=13)
+        if i < len(stages) - 1:
+            s.line(x + w, y + h / 2, x + w + gap, y + h / 2)
+    s.text(70, 310, "Dense and MoE models share the same language-model objective; MoE adds an auxiliary router loss.", size=16)
+    s.save("training_step_flow.svg")
+
+
+def generation_loop() -> None:
+    s = SVG(1040, 430)
+    s.text(45, 45, "Autoregressive generation loops because each sampled token becomes part of the next input.", size=17)
+    stages = [
+        ("current ids", BLUE, BLUE_EDGE),
+        ("crop\ncontext", GRAY, GRAY_EDGE),
+        ("model\nforward", PURPLE, PURPLE_EDGE),
+        ("last logits", GREEN, GREEN_EDGE),
+        ("filter\nsample", RED, RED_EDGE),
+        ("append\ntoken", ORANGE, ORANGE_EDGE),
+    ]
+    x0, y, w, h, gap = 60, 160, 120, 62, 32
+    centers = []
+    for i, (label, fill, stroke) in enumerate(stages):
+        x = x0 + i * (w + gap)
+        centers.append((x + w / 2, y + h / 2))
+        s.rect(x, y, w, h, label, fill=fill, stroke=stroke, size=13)
+        if i < len(stages) - 1:
+            s.line(x + w, y + h / 2, x + w + gap, y + h / 2)
+    s.path(f"M {x0 + 5 * (w + gap) + w/2} {y + h} C 820 330, 160 330, {x0 + w/2} {y + h}")
+    s.text(90, 365, "The model outputs logits for all visible positions, but generation consumes only the final row.", size=16)
+    s.save("generation_loop.svg")
+
+
 def main() -> None:
     pipeline_overview()
     matrix_multiplication()
@@ -268,6 +594,20 @@ def main() -> None:
     transformer_block()
     moe_routing()
     moe_dispatch_combine()
+    decoder_shape_ladder()
+    training_vs_generation_paths()
+    causal_mask_matrix()
+    attention_memory_scaling()
+    rope_qk_rotation()
+    rmsnorm_vs_layernorm()
+    swiglu_mlp()
+    sampling_filters()
+    prefill_decode_timeline()
+    kv_cache_layout()
+    cached_vs_uncached_decode()
+    benchmark_metrics_dashboard()
+    training_step_flow()
+    generation_loop()
     print(f"wrote figures to {FIG_DIR}")
 
 

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="430" viewBox="0 0 1120 430">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#1f2933" />
+  </marker>
+</defs>
+<rect x="0" y="0" width="1120" height="430" fill="white" />
+<text x="45" y="45.0" font-family="Arial, sans-serif" font-size="17" fill="#1f2933" text-anchor="start" dominant-baseline="middle">Decoder-only shape ladder: only the last dimension changes until the vocabulary projection.</text>
+<rect x="45" y="150" width="130" height="80" fill="#ffe6c9" stroke="#bf6b21" stroke-width="2" rx="4" />
+<text x="110.0" y="180.9" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">token ids</text>
+<text x="110.0" y="195.85" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">idx</text>
+<text x="110.0" y="210.8" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,T)</text>
+<line x1="175" y1="190.0" x2="217" y2="190.0" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="217" y="150" width="130" height="80" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="282.0" y="180.9" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">embedding</text>
+<text x="282.0" y="195.85" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">lookup</text>
+<text x="282.0" y="210.8" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,T,C)</text>
+<line x1="347" y1="190.0" x2="389" y2="190.0" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="389" y="150" width="130" height="80" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="454.0" y="180.9" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">position</text>
+<text x="454.0" y="195.85" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">information</text>
+<text x="454.0" y="210.8" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,T,C)</text>
+<line x1="519" y1="190.0" x2="561" y2="190.0" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="561" y="150" width="130" height="80" fill="#eadfff" stroke="#7453b6" stroke-width="2" rx="4" />
+<text x="626.0" y="185.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">blocks x L</text>
+<text x="626.0" y="200.39999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,T,C)</text>
+<line x1="691" y1="190.0" x2="733" y2="190.0" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="733" y="150" width="130" height="80" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="798.0" y="185.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">lm_head</text>
+<text x="798.0" y="200.39999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,T,V)</text>
+<line x1="863" y1="190.0" x2="905" y2="190.0" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="905" y="150" width="130" height="80" fill="#ffd7d7" stroke="#b83a3a" stroke-width="2" rx="4" />
+<text x="970.0" y="185.45" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">cross entropy</text>
+<text x="970.0" y="200.39999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B*T,V) + (B*T)</text>
+<text x="65" y="300.0" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="start" dominant-baseline="middle">Training uses logits at every position. Generation reads only logits[:, -1, :].</text>
+<text x="65" y="335.0" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="start" dominant-baseline="middle">Targets stay integer token IDs; they do not get a vocabulary dimension.</text>
+</svg>

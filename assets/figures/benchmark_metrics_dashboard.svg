@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="430" viewBox="0 0 1080 430">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#1f2933" />
+  </marker>
+</defs>
+<rect x="0" y="0" width="1080" height="430" fill="white" />
+<text x="45" y="45.0" font-family="Arial, sans-serif" font-size="17" fill="#1f2933" text-anchor="start" dominant-baseline="middle">Inference benchmarks need workload shape, speed, memory, and a cached-vs-uncached comparison.</text>
+<rect x="70" y="120" width="150" height="95" fill="#ffe6c9" stroke="#bf6b21" stroke-width="2" rx="4" />
+<text x="145.0" y="161.9" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">prefill</text>
+<text x="145.0" y="180.3" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">latency</text>
+<text x="145.0" y="247.0" font-family="Arial, sans-serif" font-size="14" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">prompt cost</text>
+<rect x="255" y="120" width="150" height="95" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="330.0" y="161.9" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">decode</text>
+<text x="330.0" y="180.3" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">latency</text>
+<text x="330.0" y="247.0" font-family="Arial, sans-serif" font-size="14" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">per token</text>
+<rect x="440" y="120" width="150" height="95" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="515.0" y="167.5" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">tokens/sec</text>
+<text x="515.0" y="247.0" font-family="Arial, sans-serif" font-size="14" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">throughput</text>
+<rect x="625" y="120" width="150" height="95" fill="#eadfff" stroke="#7453b6" stroke-width="2" rx="4" />
+<text x="700.0" y="161.9" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">peak</text>
+<text x="700.0" y="180.3" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">memory</text>
+<text x="700.0" y="247.0" font-family="Arial, sans-serif" font-size="14" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">capacity</text>
+<rect x="810" y="120" width="150" height="95" fill="#ffd7d7" stroke="#b83a3a" stroke-width="2" rx="4" />
+<text x="885.0" y="167.5" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">speedup</text>
+<text x="885.0" y="247.0" font-family="Arial, sans-serif" font-size="14" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">cached / uncached</text>
+<rect x="230" y="300" width="625" height="55" fill="#f1f3f5" stroke="#70757a" stroke-width="2" rx="4" />
+<text x="542.5" y="327.5" font-family="Arial, sans-serif" font-size="15" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">always record: model config, device, dtype, prompt length, new tokens, seed</text>
+<text x="95" y="395.0" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="start" dominant-baseline="middle">A tokens/sec number without prompt length and cache mode is not interpretable.</text>
+</svg>

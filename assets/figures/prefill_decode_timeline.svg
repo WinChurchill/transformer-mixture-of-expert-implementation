@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="420" viewBox="0 0 1080 420">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#1f2933" />
+  </marker>
+</defs>
+<rect x="0" y="0" width="1080" height="420" fill="white" />
+<text x="45" y="45.0" font-family="Arial, sans-serif" font-size="17" fill="#1f2933" text-anchor="start" dominant-baseline="middle">Inference has two phases: one prompt prefill, then repeated one-token decode steps.</text>
+<rect x="80" y="140" width="300" height="90" fill="#ffe6c9" stroke="#bf6b21" stroke-width="2" rx="4" />
+<text x="230.0" y="175.2" font-family="Arial, sans-serif" font-size="14" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">prefill</text>
+<text x="230.0" y="191.29999999999998" font-family="Arial, sans-serif" font-size="14" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">process prompt tokens</text>
+<text x="230.0" y="207.39999999999998" font-family="Arial, sans-serif" font-size="14" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">build initial KV cache</text>
+<rect x="470" y="150" width="95" height="70" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="517.5" y="180.8" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">decode</text>
+<text x="517.5" y="194.60000000000002" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">step 1</text>
+<line x1="565" y1="185" x2="610" y2="185" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="610" y="150" width="95" height="70" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="657.5" y="180.8" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">decode</text>
+<text x="657.5" y="194.60000000000002" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">step 2</text>
+<line x1="705" y1="185" x2="750" y2="185" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="750" y="150" width="95" height="70" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="797.5" y="180.8" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">decode</text>
+<text x="797.5" y="194.60000000000002" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">step 3</text>
+<line x1="845" y1="185" x2="890" y2="185" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="890" y="150" width="95" height="70" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="937.5" y="180.8" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">decode</text>
+<text x="937.5" y="194.60000000000002" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">step 4</text>
+<line x1="380" y1="185" x2="470" y2="185" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="470" y="285" width="515" height="55" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="727.5" y="312.5" font-family="Arial, sans-serif" font-size="14" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">cache grows: T_prompt -&gt; T_prompt+1 -&gt; T_prompt+2 -&gt; ...</text>
+<line x1="518" y1="220" x2="518" y2="285" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="658" y1="220" x2="658" y2="285" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="798" y1="220" x2="798" y2="285" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="938" y1="220" x2="938" y2="285" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<text x="85" y="375.0" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="start" dominant-baseline="middle">Prefill is prompt-length dependent; decode repeats once per generated token.</text>
+</svg>

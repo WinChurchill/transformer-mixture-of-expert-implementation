@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="430" viewBox="0 0 700 430">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#1f2933" />
+  </marker>
+</defs>
+<rect x="0" y="0" width="700" height="430" fill="white" />
+<text x="45" y="40.0" font-family="Arial, sans-serif" font-size="17" fill="#1f2933" text-anchor="start" dominant-baseline="middle">Causal mask: each target position can read only itself and earlier source positions.</text>
+<text x="162" y="111.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">t0</text>
+<text x="211.0" y="66.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">s0</text>
+<rect x="190" y="90" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="211.0" y="111.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="232" y="90" width="42" height="42" fill="#ffd7d7" stroke="#b83a3a" stroke-width="1" />
+<text x="253.0" y="111.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<rect x="274" y="90" width="42" height="42" fill="#ffd7d7" stroke="#b83a3a" stroke-width="1" />
+<text x="295.0" y="111.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<rect x="316" y="90" width="42" height="42" fill="#ffd7d7" stroke="#b83a3a" stroke-width="1" />
+<text x="337.0" y="111.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<rect x="358" y="90" width="42" height="42" fill="#ffd7d7" stroke="#b83a3a" stroke-width="1" />
+<text x="379.0" y="111.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<rect x="400" y="90" width="42" height="42" fill="#ffd7d7" stroke="#b83a3a" stroke-width="1" />
+<text x="421.0" y="111.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<text x="162" y="153.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">t1</text>
+<text x="253.0" y="66.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">s1</text>
+<rect x="190" y="132" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="211.0" y="153.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="232" y="132" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="253.0" y="153.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="274" y="132" width="42" height="42" fill="#ffd7d7" stroke="#b83a3a" stroke-width="1" />
+<text x="295.0" y="153.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<rect x="316" y="132" width="42" height="42" fill="#ffd7d7" stroke="#b83a3a" stroke-width="1" />
+<text x="337.0" y="153.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<rect x="358" y="132" width="42" height="42" fill="#ffd7d7" stroke="#b83a3a" stroke-width="1" />
+<text x="379.0" y="153.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<rect x="400" y="132" width="42" height="42" fill="#ffd7d7" stroke="#b83a3a" stroke-width="1" />
+<text x="421.0" y="153.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<text x="162" y="195.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">t2</text>
+<text x="295.0" y="66.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">s2</text>
+<rect x="190" y="174" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="211.0" y="195.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="232" y="174" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="253.0" y="195.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="274" y="174" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="295.0" y="195.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="316" y="174" width="42" height="42" fill="#ffd7d7" stroke="#b83a3a" stroke-width="1" />
+<text x="337.0" y="195.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<rect x="358" y="174" width="42" height="42" fill="#ffd7d7" stroke="#b83a3a" stroke-width="1" />
+<text x="379.0" y="195.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<rect x="400" y="174" width="42" height="42" fill="#ffd7d7" stroke="#b83a3a" stroke-width="1" />
+<text x="421.0" y="195.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<text x="162" y="237.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">t3</text>
+<text x="337.0" y="66.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">s3</text>
+<rect x="190" y="216" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="211.0" y="237.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="232" y="216" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="253.0" y="237.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="274" y="216" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="295.0" y="237.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="316" y="216" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="337.0" y="237.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="358" y="216" width="42" height="42" fill="#ffd7d7" stroke="#b83a3a" stroke-width="1" />
+<text x="379.0" y="237.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<rect x="400" y="216" width="42" height="42" fill="#ffd7d7" stroke="#b83a3a" stroke-width="1" />
+<text x="421.0" y="237.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<text x="162" y="279.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">t4</text>
+<text x="379.0" y="66.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">s4</text>
+<rect x="190" y="258" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="211.0" y="279.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="232" y="258" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="253.0" y="279.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="274" y="258" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="295.0" y="279.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="316" y="258" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="337.0" y="279.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="358" y="258" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="379.0" y="279.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="400" y="258" width="42" height="42" fill="#ffd7d7" stroke="#b83a3a" stroke-width="1" />
+<text x="421.0" y="279.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">x</text>
+<text x="162" y="321.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">t5</text>
+<text x="421.0" y="66.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">s5</text>
+<rect x="190" y="300" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="211.0" y="321.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="232" y="300" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="253.0" y="321.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="274" y="300" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="295.0" y="321.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="316" y="300" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="337.0" y="321.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="358" y="300" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="379.0" y="321.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<rect x="400" y="300" width="42" height="42" fill="#dff3df" stroke="#438a43" stroke-width="1" />
+<text x="421.0" y="321.0" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">ok</text>
+<text x="90" y="380.0" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="start" dominant-baseline="middle">Green cells survive softmax. Red future cells are set to -inf before softmax.</text>
+</svg>

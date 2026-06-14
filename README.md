@@ -42,6 +42,16 @@ The main assignment document is:
 notebooks/assignment_transformer_moe.ipynb
 ```
 
+Daily reading-summary notebooks are in:
+
+```text
+notebooks/readings/00_reading_index.ipynb
+```
+
+Use those notebooks before each day of implementation. They summarize the
+assigned paper/docs sections, connect the reading to repo files, and include
+active-recall prompts.
+
 Start there for the pipeline lectures, theory, tensor-shape tables,
 implementation instructions, MoE pseudocode, debugging checklists, and
 per-section test commands. This README is only the quickstart and project index.
@@ -61,6 +71,7 @@ introduced as a differentiable soft lookup table.
 
 ```text
 notebooks/assignment_transformer_moe.ipynb   Guided assignment notebook
+notebooks/readings/                          Dated reading-summary notebooks
 src/moe_transformer_lab/manual/              Handwritten forward/backward code
 src/moe_transformer_lab/trainable/           Practical PyTorch training model
 scripts/download_tinystories.py              TinyStories download helper
@@ -148,7 +159,9 @@ section titled "MoE Tensor Flow" and the sections that follow it.
 
 ## Figures
 
-The notebook uses generated classroom-style SVG diagrams. Regenerate them with:
+The notebook uses generated classroom-style SVG diagrams for both the original
+Transformer/MoE assignment and the Project 01 inference-foundations mini
+lectures. Regenerate them with:
 
 ```powershell
 python scripts/generate_figures.py

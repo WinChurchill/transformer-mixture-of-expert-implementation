@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="460" viewBox="0 0 1060 460">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+    <path d="M0,0 L0,6 L9,3 z" fill="#1f2933" />
+  </marker>
+</defs>
+<rect x="0" y="0" width="1060" height="460" fill="white" />
+<text x="45" y="45.0" font-family="Arial, sans-serif" font-size="17" fill="#1f2933" text-anchor="start" dominant-baseline="middle">KV cache layout: every transformer layer stores keys and values for previous tokens.</text>
+<rect x="70" y="105" width="105" height="58" fill="#f1f3f5" stroke="#70757a" stroke-width="2" rx="4" />
+<text x="122.5" y="134.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">layer 0</text>
+<rect x="245" y="95" width="210" height="35" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="350.0" y="108.3" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">K cache</text>
+<text x="350.0" y="122.1" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,H,T_cache,Dh)</text>
+<rect x="245" y="140" width="210" height="35" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="350.0" y="153.3" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">V cache</text>
+<text x="350.0" y="167.10000000000002" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,H,T_cache,Dh)</text>
+<line x1="175" y1="134" x2="245" y2="113" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="175" y1="134" x2="245" y2="157" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="70" y="205" width="105" height="58" fill="#f1f3f5" stroke="#70757a" stroke-width="2" rx="4" />
+<text x="122.5" y="234.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">layer 1</text>
+<rect x="245" y="195" width="210" height="35" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="350.0" y="208.3" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">K cache</text>
+<text x="350.0" y="222.10000000000002" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,H,T_cache,Dh)</text>
+<rect x="245" y="240" width="210" height="35" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="350.0" y="253.3" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">V cache</text>
+<text x="350.0" y="267.1" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,H,T_cache,Dh)</text>
+<line x1="175" y1="234" x2="245" y2="213" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="175" y1="234" x2="245" y2="257" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="70" y="305" width="105" height="58" fill="#f1f3f5" stroke="#70757a" stroke-width="2" rx="4" />
+<text x="122.5" y="334.0" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">layer 2</text>
+<rect x="245" y="295" width="210" height="35" fill="#d7e8ff" stroke="#2f65b0" stroke-width="2" rx="4" />
+<text x="350.0" y="308.3" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">K cache</text>
+<text x="350.0" y="322.1" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,H,T_cache,Dh)</text>
+<rect x="245" y="340" width="210" height="35" fill="#dff3df" stroke="#438a43" stroke-width="2" rx="4" />
+<text x="350.0" y="353.3" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">V cache</text>
+<text x="350.0" y="367.1" font-family="Arial, sans-serif" font-size="12" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,H,T_cache,Dh)</text>
+<line x1="175" y1="334" x2="245" y2="313" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="175" y1="334" x2="245" y2="357" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<rect x="610" y="125" width="150" height="55" fill="#ffe6c9" stroke="#bf6b21" stroke-width="2" rx="4" />
+<text x="685.0" y="147.95" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">new K,V</text>
+<text x="685.0" y="162.89999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">(B,H,1,Dh)</text>
+<rect x="835" y="125" width="160" height="55" fill="#eadfff" stroke="#7453b6" stroke-width="2" rx="4" />
+<text x="915.0" y="147.95" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">append on</text>
+<text x="915.0" y="162.89999999999998" font-family="Arial, sans-serif" font-size="13" fill="#1f2933" text-anchor="middle" dominant-baseline="middle">sequence axis</text>
+<line x1="455" y1="135" x2="610" y2="152" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<line x1="760" y1="152" x2="835" y2="152" stroke="#1f2933" stroke-width="2" marker-end="url(#arrow)" />
+<text x="610" y="250.0" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="start" dominant-baseline="middle">memory = layers * 2 * B * H * T_cache * Dh * dtype_bytes</text>
+<text x="610" y="300.0" font-family="Arial, sans-serif" font-size="16" fill="#1f2933" text-anchor="start" dominant-baseline="middle">The factor 2 is for K and V. The cache grows linearly with sequence length.</text>
+</svg>
